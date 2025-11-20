@@ -16,8 +16,6 @@
   “정상 구간 vs 공격 구간”의 이상 점수 양상 비교  
 - 각 실험은 **동일 스크립트로 재현 가능**하게 구성  
 
-본 레포의 구성은 **논문 실험계획서에 직접 활용**할 수 있도록 정리됨.
-
 ---
 
 ## 2. 사용 데이터셋
@@ -35,7 +33,7 @@
 
 1회 전체 크기는 약 **22GB** 수준.  
 본 실험에서는 메모리 한계와 노트북 장비 조건을 고려하여  
-각 기간(window)별로 **20~50만 행 단위 chunk loading** 방식으로 처리.
+각 기간(window)별로 **20~50만 행 단위 chunk loading** 방식으로 처리
 
 ---
 
@@ -137,11 +135,10 @@ Node2Vec 실험도 같은 구조를 따름.
 - random expectation 대비 약 **4.2× 높은 hit**  
 - 컴퓨터 노드 기준 anomaly score도 급격한 상승 패턴
 
-**이미지 삽입 위치:**  
+
 ```
-![svd-top-anom](attack_1058085_1101285/top_anomalies.png)
-![svd-degree](attack_1058085_1101285/graph_degree_hist.png)
-![svd-user](attack_1058085_1101285/user_feature_hist.png)
+<img width="1000" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/dc57c3c3-1a2b-44b2-aaf6-b64feb23292e" />
+<img width="1000" height="400" alt="gmm_curve" src="https://github.com/user-attachments/assets/194dbb03-0687-412e-b122-1f3c11b17406" />
 ```
 
 #### 정량적 분석  
@@ -164,10 +161,10 @@ Node2Vec 실험도 같은 구조를 따름.
 → baseline 대비 anomaly 쏠림 존재  
 → 그러나 SVD 대비 공격 신호 분리가 약함(분포 분리도 차이 때문)
 
-**이미지 삽입 위치:**  
 ```
-![n2v-top-anom](node2vec_experiment/attack_1166400_1209600/top_anomalies.png)
-![n2v-degree](node2vec_experiment/attack_1166400_1209600/graph_degree_hist.png)
+<img width="800" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/6c9f4bcc-49cc-4eca-9d90-1400c3efa0d8" />
+<img width="800" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/9a74b1b2-a9bc-41fe-98a7-805cd495eaa2" />
+
 ```
 
 ---
@@ -181,10 +178,6 @@ Node2Vec 실험도 같은 구조를 따름.
 | redteam 점수 상위권 포함 | 명확한 상승 패턴 | 상승하나 변별력 약함 |
 | 계산 시간 | 매우 빠름 (노트북환경 적합) | SVD 대비 오래 걸림 |
 | 구현 단순성 | 높음 | 파라미터 튜닝 필요 |
-
-**결론:**  
-**SVD 기반 그래프 실험이 논문용 메인 실험으로 적합함.**  
-Node2Vec 실험은 보조 비교 실험으로 기록하면 충분.
 
 ---
 
@@ -212,7 +205,7 @@ IsolationForest에서
 
 ---
 
-## 9. 논문 실험 구성 시 제안
+## 9. 정리
 
 1) **Main Experiment:**  
    - SVD 기반 그래프 anomaly detection  
@@ -222,11 +215,6 @@ IsolationForest에서
 2) **Ablation Study:**  
    - Node2Vec anomaly 비교  
    - 그래프 구조 기반 방식의 차이를 논리적으로 설명 가능
-
-3) **실험 신뢰성 확보 요소:**  
-   - redteam이 실제로 존재하는 시간대만 자동 선택  
-   - baseline vs attack의 분리도 명확  
-   - random expectation 대비 실제 anomaly hit이 3~5배 높음
 
 ---
 
