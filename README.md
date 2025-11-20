@@ -199,16 +199,4 @@ IsolationForest에서
 
 ---
 
-## 9. 정리
-
-1) **Main Experiment:**  
-   - SVD 기반 그래프 anomaly detection  
-   - computer-level + user-level 결합  
-   - redteam 시간대에서 분명한 anomaly 상승 그래프 포함
-
-2) **Ablation Study:**  
-   - Node2Vec anomaly 비교  
-   - 그래프 구조 기반 방식의 차이를 논리적으로 설명 가능
-
----
 
