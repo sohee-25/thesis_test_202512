@@ -119,11 +119,6 @@ Node2Vec 실험도 같은 구조를 따름.
 - redteam 이벤트 없음  
 - 그래프는 주로 정상적인 컴퓨터 간 이동 패턴으로 구성됨
 
-**참고 이미지 삽입 위치:**  
-```
-![baseline-degree](baseline/graph_degree_hist.png)
-```
-
 ---
 
 ### 6-2. 대표 공격 시간대 #1  
@@ -136,10 +131,9 @@ Node2Vec 실험도 같은 구조를 따름.
 - 컴퓨터 노드 기준 anomaly score도 급격한 상승 패턴
 
 
-```
+
 <img width="1000" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/dc57c3c3-1a2b-44b2-aaf6-b64feb23292e" />
 <img width="1000" height="400" alt="gmm_curve" src="https://github.com/user-attachments/assets/194dbb03-0687-412e-b122-1f3c11b17406" />
-```
 
 #### 정량적 분석  
 - 사용자 anomaly recall @100 = 14.3%  
@@ -161,11 +155,11 @@ Node2Vec 실험도 같은 구조를 따름.
 → baseline 대비 anomaly 쏠림 존재  
 → 그러나 SVD 대비 공격 신호 분리가 약함(분포 분리도 차이 때문)
 
-```
+
 <img width="800" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/6c9f4bcc-49cc-4eca-9d90-1400c3efa0d8" />
 <img width="800" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/9a74b1b2-a9bc-41fe-98a7-805cd495eaa2" />
 
-```
+
 
 ---
 
