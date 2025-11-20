@@ -1,0 +1,14 @@
+{
+  "window": [
+    561600,
+    604800
+  ],
+  "n_graph_nodes": 11319,
+  "n_users": 25159,
+  "red_users": 2,
+  "red_computers": 5,
+  "hit_user@100": 0,
+  "hit_comp@100": 0,
+  "hit_user_ids": [],
+  "hit_comp_ids": []
+}

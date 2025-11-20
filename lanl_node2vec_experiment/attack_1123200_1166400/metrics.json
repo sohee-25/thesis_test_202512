@@ -1,0 +1,19 @@
+{
+  "window": [
+    1123200,
+    1166400
+  ],
+  "n_graph_nodes": 9356,
+  "n_users": 18228,
+  "red_users": 6,
+  "red_computers": 16,
+  "hit_user@100": 1,
+  "hit_comp@100": 2,
+  "hit_user_ids": [
+    "U66@DOM1"
+  ],
+  "hit_comp_ids": [
+    "C1015",
+    "C625"
+  ]
+}

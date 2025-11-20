@@ -1,0 +1,27 @@
+{
+  "window": [
+    1080000,
+    1123200
+  ],
+  "n_graph_nodes": 11253,
+  "n_users": 25169,
+  "red_users": 18,
+  "red_computers": 49,
+  "hit_user@100": 1,
+  "hit_comp@100": 10,
+  "hit_user_ids": [
+    "U66@DOM1"
+  ],
+  "hit_comp_ids": [
+    "C1015",
+    "C1737",
+    "C423",
+    "C457",
+    "C467",
+    "C477",
+    "C506",
+    "C5618",
+    "C586",
+    "C965"
+  ]
+}

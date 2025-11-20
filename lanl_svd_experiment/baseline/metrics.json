@@ -1,0 +1,13 @@
+{
+  "window": [
+    0,
+    43200
+  ],
+  "n_events": 2000000,
+  "red_users": 0,
+  "red_computers": 0,
+  "hit_user@100": 0,
+  "total_reduser": 0,
+  "hit_comp@100": 0,
+  "total_redcomp": 0
+}

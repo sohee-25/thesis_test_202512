@@ -1,0 +1,18 @@
+{
+  "window": [
+    820800,
+    864000
+  ],
+  "n_graph_nodes": 10089,
+  "n_users": 21769,
+  "red_users": 1,
+  "red_computers": 2,
+  "hit_user@100": 1,
+  "hit_comp@100": 1,
+  "hit_user_ids": [
+    "U1653@DOM1"
+  ],
+  "hit_comp_ids": [
+    "C754"
+  ]
+}

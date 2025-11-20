@@ -1,0 +1,494 @@
+{
+  "baseline": {
+    "window": [
+      86400,
+      129600
+    ],
+    "n_graph_nodes": 7965,
+    "n_users": 16295,
+    "red_users": 0,
+    "red_computers": 0,
+    "hit_user@100": 0,
+    "hit_comp@100": 0,
+    "hit_user_ids": [],
+    "hit_comp_ids": []
+  },
+  "attacks": [
+    {
+      "window": [
+        129600,
+        172800
+      ],
+      "n_graph_nodes": 9927,
+      "n_users": 21998,
+      "red_users": 4,
+      "red_computers": 11,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        172800,
+        216000
+      ],
+      "n_graph_nodes": 8239,
+      "n_users": 15998,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        216000,
+        259200
+      ],
+      "n_graph_nodes": 9387,
+      "n_users": 19892,
+      "red_users": 2,
+      "red_computers": 5,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        432000,
+        475200
+      ],
+      "n_graph_nodes": 7807,
+      "n_users": 14571,
+      "red_users": 3,
+      "red_computers": 10,
+      "hit_user@100": 0,
+      "hit_comp@100": 2,
+      "hit_user_ids": [],
+      "hit_comp_ids": [
+        "C457",
+        "C612"
+      ]
+    },
+    {
+      "window": [
+        475200,
+        518400
+      ],
+      "n_graph_nodes": 11029,
+      "n_users": 24765,
+      "red_users": 2,
+      "red_computers": 3,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        561600,
+        604800
+      ],
+      "n_graph_nodes": 11319,
+      "n_users": 25159,
+      "red_users": 2,
+      "red_computers": 5,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        604800,
+        648000
+      ],
+      "n_graph_nodes": 9460,
+      "n_users": 18839,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 1,
+      "hit_user_ids": [],
+      "hit_comp_ids": [
+        "C529"
+      ]
+    },
+    {
+      "window": [
+        691200,
+        734400
+      ],
+      "n_graph_nodes": 9512,
+      "n_users": 18916,
+      "red_users": 10,
+      "red_computers": 17,
+      "hit_user@100": 0,
+      "hit_comp@100": 1,
+      "hit_user_ids": [],
+      "hit_comp_ids": [
+        "C395"
+      ]
+    },
+    {
+      "window": [
+        734400,
+        777600
+      ],
+      "n_graph_nodes": 11363,
+      "n_users": 25281,
+      "red_users": 41,
+      "red_computers": 163,
+      "hit_user@100": 1,
+      "hit_comp@100": 8,
+      "hit_user_ids": [
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": [
+        "C1015",
+        "C1611",
+        "C1737",
+        "C3173",
+        "C5453",
+        "C801",
+        "C8172",
+        "C92"
+      ]
+    },
+    {
+      "window": [
+        820800,
+        864000
+      ],
+      "n_graph_nodes": 10089,
+      "n_users": 21769,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 1,
+      "hit_comp@100": 1,
+      "hit_user_ids": [
+        "U1653@DOM1"
+      ],
+      "hit_comp_ids": [
+        "C754"
+      ]
+    },
+    {
+      "window": [
+        1036800,
+        1080000
+      ],
+      "n_graph_nodes": 8233,
+      "n_users": 15437,
+      "red_users": 29,
+      "red_computers": 57,
+      "hit_user@100": 3,
+      "hit_comp@100": 5,
+      "hit_user_ids": [
+        "U12@DOM1",
+        "U20@DOM1",
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": [
+        "C1085",
+        "C1737",
+        "C452",
+        "C553",
+        "C849"
+      ]
+    },
+    {
+      "window": [
+        1080000,
+        1123200
+      ],
+      "n_graph_nodes": 11253,
+      "n_users": 25169,
+      "red_users": 18,
+      "red_computers": 49,
+      "hit_user@100": 1,
+      "hit_comp@100": 10,
+      "hit_user_ids": [
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": [
+        "C1015",
+        "C1737",
+        "C423",
+        "C457",
+        "C467",
+        "C477",
+        "C506",
+        "C5618",
+        "C586",
+        "C965"
+      ]
+    },
+    {
+      "window": [
+        1123200,
+        1166400
+      ],
+      "n_graph_nodes": 9356,
+      "n_users": 18228,
+      "red_users": 6,
+      "red_computers": 16,
+      "hit_user@100": 1,
+      "hit_comp@100": 2,
+      "hit_user_ids": [
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": [
+        "C1015",
+        "C625"
+      ]
+    },
+    {
+      "window": [
+        1166400,
+        1209600
+      ],
+      "n_graph_nodes": 11414,
+      "n_users": 25884,
+      "red_users": 21,
+      "red_computers": 37,
+      "hit_user@100": 3,
+      "hit_comp@100": 5,
+      "hit_user_ids": [
+        "U1653@DOM1",
+        "U24@DOM1",
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": [
+        "C10",
+        "C1015",
+        "C457",
+        "C754",
+        "C92"
+      ]
+    },
+    {
+      "window": [
+        1209600,
+        1252800
+      ],
+      "n_graph_nodes": 9539,
+      "n_users": 18476,
+      "red_users": 12,
+      "red_computers": 17,
+      "hit_user@100": 0,
+      "hit_comp@100": 3,
+      "hit_user_ids": [],
+      "hit_comp_ids": [
+        "C457",
+        "C5030",
+        "C586"
+      ]
+    },
+    {
+      "window": [
+        1252800,
+        1296000
+      ],
+      "n_graph_nodes": 11296,
+      "n_users": 25148,
+      "red_users": 2,
+      "red_computers": 3,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        1296000,
+        1339200
+      ],
+      "n_graph_nodes": 9122,
+      "n_users": 19377,
+      "red_users": 2,
+      "red_computers": 4,
+      "hit_user@100": 0,
+      "hit_comp@100": 2,
+      "hit_user_ids": [],
+      "hit_comp_ids": [
+        "C395",
+        "C467"
+      ]
+    },
+    {
+      "window": [
+        1339200,
+        1382400
+      ],
+      "n_graph_nodes": 11233,
+      "n_users": 24853,
+      "red_users": 12,
+      "red_computers": 13,
+      "hit_user@100": 1,
+      "hit_comp@100": 2,
+      "hit_user_ids": [
+        "U24@DOM1"
+      ],
+      "hit_comp_ids": [
+        "C1015",
+        "C1980"
+      ]
+    },
+    {
+      "window": [
+        1728000,
+        1771200
+      ],
+      "n_graph_nodes": 8274,
+      "n_users": 15437,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 1,
+      "hit_user_ids": [],
+      "hit_comp_ids": [
+        "C467"
+      ]
+    },
+    {
+      "window": [
+        1814400,
+        1857600
+      ],
+      "n_graph_nodes": 9422,
+      "n_users": 18671,
+      "red_users": 2,
+      "red_computers": 3,
+      "hit_user@100": 1,
+      "hit_comp@100": 0,
+      "hit_user_ids": [
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        1900800,
+        1944000
+      ],
+      "n_graph_nodes": 9592,
+      "n_users": 19223,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 1,
+      "hit_user_ids": [],
+      "hit_comp_ids": [
+        "C612"
+      ]
+    },
+    {
+      "window": [
+        2289600,
+        2332800
+      ],
+      "n_graph_nodes": 11393,
+      "n_users": 24897,
+      "red_users": 19,
+      "red_computers": 25,
+      "hit_user@100": 1,
+      "hit_comp@100": 0,
+      "hit_user_ids": [
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        2332800,
+        2376000
+      ],
+      "n_graph_nodes": 9549,
+      "n_users": 18427,
+      "red_users": 5,
+      "red_computers": 8,
+      "hit_user@100": 1,
+      "hit_comp@100": 0,
+      "hit_user_ids": [
+        "U66@DOM1"
+      ],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        2376000,
+        2419200
+      ],
+      "n_graph_nodes": 11468,
+      "n_users": 24873,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        2419200,
+        2462400
+      ],
+      "n_graph_nodes": 9667,
+      "n_users": 18636,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        2462400,
+        2505600
+      ],
+      "n_graph_nodes": 11445,
+      "n_users": 24915,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        2505600,
+        2548800
+      ],
+      "n_graph_nodes": 9537,
+      "n_users": 18268,
+      "red_users": 1,
+      "red_computers": 2,
+      "hit_user@100": 0,
+      "hit_comp@100": 0,
+      "hit_user_ids": [],
+      "hit_comp_ids": []
+    },
+    {
+      "window": [
+        2548800,
+        2592000
+      ],
+      "n_graph_nodes": 11495,
+      "n_users": 25031,
+      "red_users": 3,
+      "red_computers": 4,
+      "hit_user@100": 1,
+      "hit_comp@100": 0,
+      "hit_user_ids": [
+        "U737@DOM1"
+      ],
+      "hit_comp_ids": []
+    }
+  ]
+}
