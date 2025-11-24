@@ -90,26 +90,22 @@
 실험 결과는 다음과 같은 폴더 형태로 저장됨
 
 lanl_svd_experiment/
-    baseline/
-       gmm_curve.png
-       if_curve.png
-       metrics.json
-    attack_1058085_1101285/
-       gmm_curve.png
-       if_curve.png
-       metrics.json
-    ...
-
-lanl_node2vec_experiment/
-    baseline/
-       gmm_curve.png
-       if_curve.png
-       metrics.json
-    attack_1166400_1209600/
-       gmm_curve.png
-       if_curve.png
-       metrics.json
-    ...
+│ baseline/
+│ ├─ computer_scores.csv # SVD+GMM 기반 컴퓨터 이상 점수 랭킹
+│ ├─ user_scores.csv # IForest 기반 사용자 이상 점수 랭킹
+│ ├─ user_feature_contrib.csv # 사용자 z-score 기반 feature 기여도
+│ ├─ gmm_curve.png # 컴퓨터 anomaly score 분포 곡선
+│ └─ if_curve.png # 사용자 anomaly score 분포 곡선
+│
+│ attack_1058085_1101285/
+│ ├─ computer_scores.csv
+│ ├─ user_scores.csv
+│ ├─ user_feature_contrib.csv
+│ ├─ gmm_curve.png
+│ └─ if_curve.png
+│
+│ attack_.../
+│ └─ ...
 ---
 
 ## 6. 주요 실험 결과 요약
