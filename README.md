@@ -87,13 +87,14 @@
 
 ## 5. 결과 디렉토리 구조
 
-실험 결과는 다음과 같이 저장됨:
+실험 결과는 다음과 같은 폴더 형태로 저장됨
 
 lanl_svd_experiment/
 │ baseline/
 │ ├─ metrics.json
 │ ├─ gmm_curve.png
 │ └─ if_curve.png
+│
 │ attack_1058085_1101285/
 │ ├─ metrics.json
 │ ├─ computer_scores.csv
@@ -101,21 +102,27 @@ lanl_svd_experiment/
 │ ├─ user_feature_contrib.csv
 │ ├─ gmm_curve.png
 │ └─ if_curve.png
-│ ...
+│
+│ attack_XXX_YYY/
+│ ├─ ...
 
-Node2Vec 실험도 동일 구조로 저장됨:
+nginx
+
+Node2Vec 실험도 동일 구조
 
 lanl_node2vec_experiment/
 │ baseline/
 │ ├─ metrics.json
 │ ├─ gmm_curve.png
 │ └─ if_curve.png
+│
 │ attack_1166400_1209600/
 │ ├─ metrics.json
 │ ├─ gmm_curve.png
 │ └─ if_curve.png
-│ ...
-
+│
+│ attack_XXX_YYY/
+│ ├─ ...
 
 ---
 
