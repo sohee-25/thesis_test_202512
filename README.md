@@ -16,8 +16,6 @@
   “정상 구간 vs 공격 구간”의 이상 점수 양상 비교  
 - 각 실험은 **동일 스크립트로 재현 가능**하게 구성  
 
-본 레포의 구성은 **논문 실험계획서에 직접 활용**할 수 있도록 정리됨.
-
 ---
 
 ## 2. 사용 데이터셋
@@ -35,7 +33,7 @@
 
 1회 전체 크기는 약 **22GB** 수준.  
 본 실험에서는 메모리 한계와 노트북 장비 조건을 고려하여  
-각 기간(window)별로 **20~50만 행 단위 chunk loading** 방식으로 처리.
+각 기간(window)별로 **20~50만 행 단위 chunk loading** 방식으로 처리
 
 ---
 
@@ -89,144 +87,162 @@
 
 ## 5. 결과 디렉토리 구조
 
-본 레포는 다음 형태를 갖음:
+실험 결과는 다음과 같은 폴더 형태로 저장됨
 
-```
-lanl_final_experiment/
+lanl_svd_experiment/
 │ baseline/
-│   ├─ metrics.json
-│   ├─ graph_degree_hist.png
-│   ├─ gmm_anomaly_hist.png
-│   └─ user_feature_hist.png
+│ ├─ computer_scores.csv            # SVD+GMM 기반 컴퓨터 이상 점수 랭킹
+│ ├─ user_scores.csv                # IForest 기반 사용자 이상 점수 랭킹
+│ ├─ user_feature_contrib.csv       # 사용자 z-score 기반 feature 기여도
+│ ├─ gmm_curve.png                  # 컴퓨터 anomaly score 분포 곡선
+│ └─ if_curve.png                   # 사용자 anomaly score 분포 곡선
+│
 │ attack_1058085_1101285/
-│   ├─ metrics.json
-│   ├─ computer_scores.csv
-│   ├─ user_scores.csv
-│   ├─ top_anomalies.png
-│   ├─ graph_degree_hist.png
-│   ├─ gmm_anomaly_hist.png
-│   └─ user_feature_hist.png
-│ ...
-```
-
-Node2Vec 실험도 같은 구조를 따름.
+│ ├─ computer_scores.csv
+│ ├─ user_scores.csv
+│ ├─ user_feature_contrib.csv
+│ ├─ gmm_curve.png
+│ └─ if_curve.png
+│
+│ attack_.../
+│ └─ ...
 
 ---
 
 ## 6. 주요 실험 결과 요약
 
-### 6-1. baseline (정상 구간)
+### 6-1. Baseline (정상 구간)
 
-사용된 시간 구간: **0–43,200초 (12시간)**  
-- redteam 이벤트 없음  
-- 그래프는 주로 정상적인 컴퓨터 간 이동 패턴으로 구성됨
+시간 구간: **0–43,200초 (12시간)**  
+- baseline에서는 전체 사용자 anomaly score가 완만한 감소곡선을 보이며, 상위 사용자부터의 급격한 이상치 패턴이 거의 없음
+- 정상 구간에서는 사용자 행동 분포가 상대적으로 균질하게 유지됨을 의미
+- 공격 신호가 섞이지 않아 분포의 꼬리 부분(상위 rank) 도 거의 평탄
 
-**참고 이미지 삽입 위치:**  
-```
-![baseline-degree](baseline/graph_degree_hist.png)
-```
-
----
-
-### 6-2. 대표 공격 시간대 #1  
-구간: **1058085–1101285초**
-
-#### (A) SVD 기반 결과  
-- redteam 사용자 수 7명  
-- top-100 anomaly scoring에서 실제 공격 사용자 1명 포함  
-- random expectation 대비 약 **4.2× 높은 hit**  
-- 컴퓨터 노드 기준 anomaly score도 급격한 상승 패턴
-
-**이미지 삽입 위치:**  
-```
-![svd-top-anom](attack_1058085_1101285/top_anomalies.png)
-![svd-degree](attack_1058085_1101285/graph_degree_hist.png)
-![svd-user](attack_1058085_1101285/user_feature_hist.png)
-```
-
-#### 정량적 분석  
-- 사용자 anomaly recall @100 = 14.3%  
-- 사용자 random expectation = 3.4%  
-- 컴퓨터 anomaly recall @100 = 14.7%  
-- 컴퓨터 random expectation = 3.2%  
-→ 일반적인 확률적 기대 대비 명확하게 높음
+<img width="1000" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/11ae47d4-289a-4c69-b675-4f4f54f28226" />
+<img width="1000" height="400" alt="gmm_curve" src="https://github.com/user-attachments/assets/97437adc-8bdb-4497-b4de-1c238e4b535d" />
 
 ---
 
-### 6-3. 대표 공격 시간대 #2 (Node2Vec)
+### 6-2. 공격 구간 예시 #1 (SVD 기반)
 
-구간: **1166400–1209600초**
+시간 구간: **1058085–1101285초**
 
-#### (B) Node2Vec 기반 결과  
-- redteam 사용자 수 7명  
-- anomaly recall @100 = 14.3%  
-- random expectation = 8.1%  
-→ baseline 대비 anomaly 쏠림 존재  
-→ 그러나 SVD 대비 공격 신호 분리가 약함(분포 분리도 차이 때문)
+주요 특징:
+- redteam 사용자 7명 등장  
+- computer anomaly score 곡선에서 상위 노드 점수 값이 급격히 상승  
+- user anomaly도 baseline 대비 상위권 분포 변화 존재  
+- random expectation 대비 더 높은 hit 비율
 
-**이미지 삽입 위치:**  
-```
-![n2v-top-anom](node2vec_experiment/attack_1166400_1209600/top_anomalies.png)
-![n2v-degree](node2vec_experiment/attack_1166400_1209600/graph_degree_hist.png)
-```
+<img width="1000" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/754a9f46-4363-48e1-9c94-d87b7e50a48b" />
+<img width="1000" height="400" alt="gmm_curve" src="https://github.com/user-attachments/assets/ea069266-3f44-412d-98d0-fda84b67f616" />
+
+정량적 결과:
+- 사용자 Recall@100 ≈ **14.3%**  
+- 사용자 random 기대치 ≈ **3.4%**  
+- 컴퓨터 Recall@100 ≈ **14.7%**  
+- 컴퓨터 random 기대치 ≈ **3.2%**
 
 ---
 
-## 7. 실험 A(SVD) vs 실험 B(Node2Vec) 비교
+### 6-3. 공격 구간 예시 #2 (Node2Vec)
 
-| 항목 | SVD 기반 | Node2Vec 기반 |
+시간 구간: **1166400–1209600초**
+
+Node2Vec은 최소 파라미터 설정 상태로 시험적으로 실행
+상승 패턴은 존재했으나 SVD에 비해 분리도는 약함
+
+<img width="800" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/7011574a-0d52-4f2b-9294-5bf4a9c9466a" />
+<img width="800" height="400" alt="gmm_curve" src="https://github.com/user-attachments/assets/1d205fa7-c6d0-4420-8477-c5ae4ebe6c7e" />
+
+
+핵심 요약:
+- Recall@100 ≈ **14.3%**  
+- random 기대치보다 높으나, SVD처럼 명확한 급상승 패턴은 아님  
+- sparse LANL 그래프에서 random-walk 기반 임베딩의 안정성 한계가 나타남
+- 
+### 6-4. 전체 공격 구간 Summary
+
+- 여러 attack window에서 계산된 anomaly score의 흐름을 한 장에서 비교한 결과
+- 개별 window마다 그래프 모양이 조금씩 다르지만,  공격이 포함된 구간에서는 상위 anomaly 점수가 baseline보다 더 크게 치우치는 경향이 반복적으로 나타남  
+
+#### (A) 상위 anomaly 크기 비교  
+- 상위 랭크(예: 1~200위) 사용자들의 anomaly 평균치를 attack window별로 묶어 비교한 그래프  
+- baseline 대비 일부 공격 구간에서 더 높은 점수대가 반복적으로 나타남
+  
+<img width="3121" height="1237" alt="svd_anomaly_curve_summary" src="https://github.com/user-attachments/assets/bf4552fa-bd15-4655-b115-72780f5f78b7" />
+
+#### (B) Recall 분포 비교  
+- 각 attack window에서 계산된 Recall@100 값을 모아 분포로 나타낸 것  
+- window마다 성능 편차는 있지만 전체적으로 baseline random 기대치보다 높은 값이 반복적으로 등장
+
+<img width="2600" height="1391" alt="svd_recall_boxplot" src="https://github.com/user-attachments/assets/e2a9625e-9c8a-446e-a5e0-219cbe56b863" />
+
+#### Summary 해석  
+- 공격이 포함된 여러 구간에서 **상위 anomaly score 구간이 완만하게 상승하는 패턴**이 반복적으로 나타남  
+- 다만 모든 window에서 강하게 분리되는 것은 아니며, LANL 로그의 변동성이 커서 window별로 차이가 있음  
+- summary 결과는 “일부 구간에서 신호가 반복적으로 잡힌다”는 정도의 해석이 적절함
+---
+
+## 7. SVD vs Node2Vec 비교
+
+| 기준 | SVD 기반 | Node2Vec 기반 |
 |------|----------|----------------|
-| 그래프 임베딩 방식 | 전역적 구조 반영(SVD) | 지역적 random walk 중심 |
-| 점수 분포 | 공격 구간에서 급격히 분리 | 공격 구간에서도 baseline과 일부 겹침 |
-| redteam 점수 상위권 포함 | 명확한 상승 패턴 | 상승하나 변별력 약함 |
-| 계산 시간 | 매우 빠름 (노트북환경 적합) | SVD 대비 오래 걸림 |
-| 구현 단순성 | 높음 | 파라미터 튜닝 필요 |
+| 반영 정보 | 그래프의 전역 구조 | 지역 random walk 구조 |
+| sparse LANL 환경 안정성 | 비교적 안정적 | 분산 불안정성 높음 |
+| 공격 구간 anomaly 분리도 | 일부 구간에서 명확한 상승 | 상대적으로 약함 |
+| 계산 비용 | 낮음 | 상대적으로 높음 |
+| 파라미터 의존성 | 낮음 | 높음 |
+| 전체 적합성 | LANL 구조에 적합 | baseline 수준의 안정성 부족 |
 
-**결론:**  
-**SVD 기반 그래프 실험이 논문용 메인 실험으로 적합함.**  
-Node2Vec 실험은 보조 비교 실험으로 기록하면 충분.
-
----
-
-## 8. 분석 및 해석
-
-### (1) LANL 공격 시간대의 특징
-- redteam 활동은 컴퓨터 간 lateral movement를 유발  
-- 평소보다 edge가 비정상적 방향으로 증가  
-- 이 패턴은 adjacency matrix에서 rank 변화를 유발  
-→ SVD 임베딩에서 공격 노드만 특이점(outlier)로 분리됨
-
-### (2) 사용자 행동 기반 특징(Behavior Vectors)
-- total event count  
-- night ratio  
-- unique dst computers 수  
-- self-user 이벤트 비율 등  
-IsolationForest에서  
-공격 사용자들의 **feature-level 편차가 압도적으로 높음**이 관찰됨.
-
-### (3) Node2Vec의 한계
-- LANL 그래프는 하루 단위에서도 5천~1만 노드에 달함  
-- random walk 기반 임베딩은  
-  공격 패턴이 “국지적”으로만 생기면 분리가 약해짐  
-- 논문 목적의 “명확한 패턴 분리”에는 SVD가 더 적합
+Node2Vec은 “보조적 비교 실험”으로 유지하며,  
+주요 분석은 SVD 결과를 중심으로 진행함
 
 ---
 
-## 9. 논문 실험 구성 시 제안
+## 8. 전체 분석 및 향후 방향
 
-1) **Main Experiment:**  
-   - SVD 기반 그래프 anomaly detection  
-   - computer-level + user-level 결합  
-   - redteam 시간대에서 분명한 anomaly 상승 그래프 포함
+### (1) SVD 기반 anomaly 관찰
 
-2) **Ablation Study:**  
-   - Node2Vec anomaly 비교  
-   - 그래프 구조 기반 방식의 차이를 논리적으로 설명 가능
+공격 구간 일부에서 anomaly score 분포의 변동이 실제로 나타남  
+일부 redteam 관련 노드가 상위 anomaly 영역으로 이동하는 패턴도 확인됨  
+다만 모든 attack window에서 동일한 수준의 분리가 발생하지는 않음  
+LANL 정상 로그 자체의 변동성이 크기 때문에, 특정 구간은 신호가 약하게 나타남
 
-3) **실험 신뢰성 확보 요소:**  
-   - redteam이 실제로 존재하는 시간대만 자동 선택  
-   - baseline vs attack의 분리도 명확  
-   - random expectation 대비 실제 anomaly hit이 3~5배 높음
+### (2) 사용자 행동 기반(IForest) 관찰
+
+일부 window에서는 사용자 행동 통계량 변화가 상대적으로 명확함  
+그러나 사용자 수가 매우 많고 데이터가 sparse해 상위 Top-K 기반 분리는 일정 수준에서 한계가 존재함  
+추가 특징을 조합하거나 사용자–컴퓨터 관계를 함께 고려할 여지가 있어 보임
+
+### (3) Node2Vec 비교 실험
+
+LANL 그래프처럼 규모가 크고 연결이 희박한 경우 random-walk 기반 임베딩 안정성이 떨어질 수 있음  
+이번 실험에서도 anomaly 상승 자체는 관찰되지만 SVD만큼 분리도는 나타나지 않음  
+그래프 구조가 시계열성·다중 관계를 동시에 가지기 때문으로 보이며, 현재 실험에서는 참고용 수준으로 활용함
+
+### (4) 향후 적용을 고려 중인 모델
+
+현재 결과를 기준으로 보면 SVD 기반 접근이 상대적으로 안정적인 편이었지만  
+LANL 데이터 특성상 일부 구간에서는 분리도가 충분히 크지 않은 문제도 확인됨  
+
+기존 LANL 연구나 공개 레포에서 활용된 방법들을 참고하면  
+다음과 같은 모델 방향을 추가로 검토해볼 여지가 있음  
+
+- Graph Autoencoder(GAE) 계열  
+- Relational-GCN(Log2Graph 계열에서 사용)  
+- 시계열 기반 그래프 모델(TGN 등)
+
+이들 모델은 시간적 변화나 다중 엔티티 관계를 함께 고려할 수 있어  
+SVD에서 보이지 않는 신호를 포착할 가능성이 있음  
+
+현재 장비 환경과 구현 부담을 고려하면  
+GAE 계열이 상대적으로 접근성이 높고 재현도도 확보할 수 있는 선택지로 보임  
+다만 실제 적용 가능성은 추가 테스트가 필요하며,  
+이번 실험에서는 우선 SVD 기반 이상탐지의 동작 여부를 확인하는 데에 중점을 두었음
 
 ---
+
+
+
+
 
