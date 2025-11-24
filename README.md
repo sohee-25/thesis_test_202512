@@ -161,19 +161,18 @@ Node2Vec은 최소 파라미터 설정 상태로 시험적으로 실행
 - 
 ### 6-4. 전체 공격 구간 Summary
 
-여러 attack window에서 계산된 anomaly score의 흐름을 한 장에서 비교한 결과임  
-개별 window마다 그래프 모양이 조금씩 다르지만,  
-공격이 포함된 구간에서는 상위 anomaly 점수가 baseline보다 더 크게 치우치는 경향이 반복적으로 나타남  
+- 여러 attack window에서 계산된 anomaly score의 흐름을 한 장에서 비교한 결과
+- 개별 window마다 그래프 모양이 조금씩 다르지만,  공격이 포함된 구간에서는 상위 anomaly 점수가 baseline보다 더 크게 치우치는 경향이 반복적으로 나타남  
 
 #### (A) 상위 anomaly 크기 비교  
-상위 랭크(예: 1~200위) 사용자들의 anomaly 평균치를 
-attack window별로 묶어 비교한 그래프  
-baseline 대비 일부 공격 구간에서 더 높은 점수대가 반복적으로 나타남  
+- 상위 랭크(예: 1~200위) 사용자들의 anomaly 평균치를 attack window별로 묶어 비교한 그래프  
+- baseline 대비 일부 공격 구간에서 더 높은 점수대가 반복적으로 나타남
+  
 <img width="3121" height="1237" alt="svd_anomaly_curve_summary" src="https://github.com/user-attachments/assets/bf4552fa-bd15-4655-b115-72780f5f78b7" />
 
 #### (B) Recall 분포 비교  
-각 attack window에서 계산된 Recall@100 값을 모아 분포로 나타낸 것  
-window마다 성능 편차는 있지만 전체적으로 baseline random 기대치보다 높은 값이 반복적으로 등장한다는 점을 확인할 수 있음  
+- 각 attack window에서 계산된 Recall@100 값을 모아 분포로 나타낸 것  
+- window마다 성능 편차는 있지만 전체적으로 baseline random 기대치보다 높은 값이 반복적으로 등장
 
 <img width="2600" height="1391" alt="svd_recall_boxplot" src="https://github.com/user-attachments/assets/e2a9625e-9c8a-446e-a5e0-219cbe56b863" />
 
