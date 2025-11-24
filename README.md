@@ -124,9 +124,9 @@ lanl_node2vec_experiment/
 ### 6-1. Baseline (정상 구간)
 
 시간 구간: **0–43,200초 (12시간)**  
-- redteam 이벤트 없음  
-- 그래프 구조는 정상적인 내부 인증 패턴 중심  
-- anomaly score 곡선이 비교적 완만함
+- baseline에서는 전체 사용자 anomaly score가 완만한 감소곡선을 보이며, 상위 사용자부터의 급격한 이상치 패턴이 거의 없음
+- 정상 구간에서는 사용자 행동 분포가 상대적으로 균질하게 유지됨을 의미
+- 공격 신호가 섞이지 않아 분포의 꼬리 부분(상위 rank) 도 거의 평탄
 
 <img width="1000" height="400" alt="if_curve" src="https://github.com/user-attachments/assets/11ae47d4-289a-4c69-b675-4f4f54f28226" />
 <img width="1000" height="400" alt="gmm_curve" src="https://github.com/user-attachments/assets/97437adc-8bdb-4497-b4de-1c238e4b535d" />
@@ -169,7 +169,29 @@ Node2Vec은 최소 파라미터 설정 상태로 시험적으로 실행
 - Recall@100 ≈ **14.3%**  
 - random 기대치보다 높으나, SVD처럼 명확한 급상승 패턴은 아님  
 - sparse LANL 그래프에서 random-walk 기반 임베딩의 안정성 한계가 나타남
+- 
+### 6-4. 전체 공격 구간 Summary
 
+여러 attack window에서 계산된 anomaly score의 흐름을 한 장에서 비교한 결과임  
+개별 window마다 그래프 모양이 조금씩 다르지만,  
+공격이 포함된 구간에서는 상위 anomaly 점수가 baseline보다 더 크게 치우치는 경향이 반복적으로 나타남  
+
+#### (A) 상위 anomaly 크기 비교  
+상위 랭크(예: 1~200위) 사용자들의 anomaly 평균치를 
+attack window별로 묶어 비교한 그래프  
+baseline 대비 일부 공격 구간에서 더 높은 점수대가 반복적으로 나타남  
+<img width="3121" height="1237" alt="svd_anomaly_curve_summary" src="https://github.com/user-attachments/assets/bf4552fa-bd15-4655-b115-72780f5f78b7" />
+
+#### (B) Recall 분포 비교  
+각 attack window에서 계산된 Recall@100 값을 모아 분포로 나타낸 것  
+window마다 성능 편차는 있지만 전체적으로 baseline random 기대치보다 높은 값이 반복적으로 등장한다는 점을 확인할 수 있음  
+
+<img width="2600" height="1391" alt="svd_recall_boxplot" src="https://github.com/user-attachments/assets/e2a9625e-9c8a-446e-a5e0-219cbe56b863" />
+
+#### Summary 해석  
+- 공격이 포함된 여러 구간에서 **상위 anomaly score 구간이 완만하게 상승하는 패턴**이 반복적으로 나타남  
+- 다만 모든 window에서 강하게 분리되는 것은 아니며, LANL 로그의 변동성이 커서 window별로 차이가 있음  
+- summary 결과는 “일부 구간에서 신호가 반복적으로 잡힌다”는 정도의 해석이 적절함
 ---
 
 ## 7. SVD vs Node2Vec 비교
