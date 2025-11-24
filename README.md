@@ -147,6 +147,10 @@ SVD 대비 비교 목적의 최소 결과만 생성하였다.
 
 → **랜덤보다는 분명히 높은 hit**,  
    그러나 공격 구간 전체에서 일관된 패턴이 나온다고 보기엔 어려움.
+<img width="3121" height="1237" alt="svd_anomaly_curve_summary" src="https://github.com/user-attachments/assets/7cc03d82-df74-482d-b27b-a54939ea0ff7" />
+<img width="2544" height="1237" alt="svd_recall_pdf" src="https://github.com/user-attachments/assets/81666a03-e185-4df1-9cda-e739fc55b18b" />
+<img width="2600" height="1237" alt="svd_recall_cdf" src="https://github.com/user-attachments/assets/c3f68dad-ef14-4d71-9769-66d5252cac4e" />
+<img width="2600" height="1391" alt="svd_recall_boxplot" src="https://github.com/user-attachments/assets/0d4a5437-ca01-40f1-9a5e-1aab7ca25828" />
 
 ---
 
