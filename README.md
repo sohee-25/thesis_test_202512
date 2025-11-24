@@ -92,10 +92,13 @@
 lanl_svd_experiment/
 │ baseline/
 │ ├─ metrics.json
+│ ├─ computer_scores.csv
+│ ├─ user_scores.csv
+│ ├─ user_feature_contrib.csv
 │ ├─ gmm_curve.png
 │ └─ if_curve.png
 │
-│ attack_1058085_1101285/
+│ attack_<start><end>/
 │ ├─ metrics.json
 │ ├─ computer_scores.csv
 │ ├─ user_scores.csv
@@ -103,27 +106,12 @@ lanl_svd_experiment/
 │ ├─ gmm_curve.png
 │ └─ if_curve.png
 │
-│ attack_XXX_YYY/
-│ ├─ ...
-
-nginx
-
-Node2Vec 실험도 동일 구조
-
 lanl_node2vec_experiment/
 │ baseline/
-│ ├─ metrics.json
+│ attack<start>_<end>/
 │ ├─ gmm_curve.png
-│ └─ if_curve.png
-│
-│ attack_1166400_1209600/
-│ ├─ metrics.json
-│ ├─ gmm_curve.png
-│ └─ if_curve.png
-│
-│ attack_XXX_YYY/
-│ ├─ ...
-
+│ ├─ if_curve.png
+│ └─ metrics.json
 ---
 
 ## 6. 주요 실험 결과 요약
