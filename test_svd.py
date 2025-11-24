@@ -300,7 +300,6 @@ def run_window(start, end, red_df, tag):
     metrics = to_python_type(metrics)
 
     with open(os.path.join(wdir,"metrics.json"),"w") as f:
-
         json.dump(metrics,f,indent=2)
 
     return metrics
