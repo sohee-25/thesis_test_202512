@@ -90,28 +90,26 @@
 실험 결과는 다음과 같은 폴더 형태로 저장됨
 
 lanl_svd_experiment/
-│ baseline/
-│ ├─ metrics.json
-│ ├─ computer_scores.csv
-│ ├─ user_scores.csv
-│ ├─ user_feature_contrib.csv
-│ ├─ gmm_curve.png
-│ └─ if_curve.png
-│
-│ attack_<start><end>/
-│ ├─ metrics.json
-│ ├─ computer_scores.csv
-│ ├─ user_scores.csv
-│ ├─ user_feature_contrib.csv
-│ ├─ gmm_curve.png
-│ └─ if_curve.png
-│
+    baseline/
+       gmm_curve.png
+       if_curve.png
+       metrics.json
+    attack_1058085_1101285/
+       gmm_curve.png
+       if_curve.png
+       metrics.json
+    ...
+
 lanl_node2vec_experiment/
-│ baseline/
-│ attack<start>_<end>/
-│ ├─ gmm_curve.png
-│ ├─ if_curve.png
-│ └─ metrics.json
+    baseline/
+       gmm_curve.png
+       if_curve.png
+       metrics.json
+    attack_1166400_1209600/
+       gmm_curve.png
+       if_curve.png
+       metrics.json
+    ...
 ---
 
 ## 6. 주요 실험 결과 요약
